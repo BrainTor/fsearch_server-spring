@@ -1,17 +1,17 @@
 package com.fsearch;
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Coordinates extends HttpServlet {
+public class Coordinates {
+	
 	@RequestMapping("/")
-	public String index(HttpServletRequest request, HttpServletResponse response) {
-		int i=0;
-		return "hello world";
+	public String index() {
+		return "Fsearch server alive!!!";
+	}
+	@RequestMapping("/coordinates")
+	public String setCoordinate(@RequestParam(value="altitude", required=true) String	altitude) {
+		return altitude;
 	}
 }
