@@ -32,7 +32,10 @@ public class CoordController {
 		return true;
 	}
 	@RequestMapping("/coordinates/get")
-	public ArrayList<Coordinates> getCoordinate() {
+	public ArrayList<Coordinates> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName) {
+		if(!hashName.equals("password")){
+			return null;
+		}
 		return arrayList;
 	}
 }
