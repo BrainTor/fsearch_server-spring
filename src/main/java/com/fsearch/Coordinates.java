@@ -9,6 +9,7 @@ public class Coordinates {
 	@RequestMapping("/")
 	public String index() { 
 		
+		
 		return "Fsearch server alive!!!";
 	}
 	@RequestMapping("/coordinates")
