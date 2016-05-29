@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class Coordinates {
 	
 	@RequestMapping("/")
-	public String index() {
+	public String index() { 
+		
 		return "Fsearch server alive!!!";
 	}
 	@RequestMapping("/coordinates")
