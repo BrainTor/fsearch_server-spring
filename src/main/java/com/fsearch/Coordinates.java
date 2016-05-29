@@ -1,17 +1,11 @@
 package com.fsearch;
 
-public class Coordinates {
-	private Integer id;
-	private Double latitude, longtitude, altitude, speed;
+import java.util.Date;
 
-	public Coordinates(Integer id, Double latitude, Double longtitude, Double altitude, Double speed) {
-		super();
-		this.id = id;
-		this.latitude = latitude;
-		this.longtitude = longtitude;
-		this.altitude = altitude;
-		this.speed = speed;
-	}
+public class Coordinates {
+	private Integer id, droneID;
+	Date date;
+	private Double latitude, longtitude, altitude, speed;
 
 	public Integer getId() {
 		return id;
@@ -19,6 +13,22 @@ public class Coordinates {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getDroneID() {
+		return droneID;
+	}
+
+	public void setDroneID(Integer droneID) {
+		this.droneID = droneID;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public Double getLatitude() {
@@ -50,6 +60,18 @@ public class Coordinates {
 	}
 
 	public void setSpeed(Double speed) {
+		this.speed = speed;
+	}
+
+	public Coordinates(Integer id, Integer droneID, Date date, Double latitude, Double longtitude, Double altitude,
+			Double speed) {
+		super();
+		this.id = id;
+		this.droneID = droneID;
+		this.date = date;
+		this.latitude = latitude;
+		this.longtitude = longtitude;
+		this.altitude = altitude;
 		this.speed = speed;
 	}
 }

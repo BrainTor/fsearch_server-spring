@@ -3,16 +3,25 @@ package com.fsearch;
 import java.util.Date;
 
 public class Fire {
-	public Fire(Integer id, Integer fireRate, Double latitude, Double longtitude, Date date) {
+	public Fire(Integer id, Integer droneId, Integer fireRate, Double latitude, Double longtitude, Date date) {
 		super();
 		this.id = id;
 		this.fireRate = fireRate;
 		this.latitude = latitude;
 		this.longtitude = longtitude;
 		this.date = date;
+		this.droneId = droneId;
 	}
 
-	private Integer id, fireRate;
+	public Integer getDroneId() {
+		return droneId;
+	}
+
+	public void setDroneId(Integer droneId) {
+		this.droneId = droneId;
+	}
+
+	private Integer id, fireRate, droneId;
 	private Double latitude, longtitude;
 	private Date date;
 
