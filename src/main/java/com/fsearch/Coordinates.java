@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Coordinates extends HttpServlet {
 	@RequestMapping("/")
 	public String index(HttpServletRequest request, HttpServletResponse response) {
+		int i=0;
 		return "hello world";
 	}
 }
