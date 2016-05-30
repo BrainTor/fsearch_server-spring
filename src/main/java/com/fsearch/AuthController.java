@@ -26,12 +26,13 @@ public class AuthController {
 	@RequestMapping("/auth/fillClient")
 	public Boolean setClient(
 			@RequestParam(value = "hashName", required = true) String hashName,
+			@RequestParam(value = "hashNameDrone", required = true) String hashNameDrone,
 			@RequestParam(value = "ID", required = true) Integer ID)
 		    {
 		if(!hashName.equals("password")){
 			return false;
 		}
-		Client client = new Client(ID,hashName);
+		Client client = new Client(ID,hashNameDrone);
 		clientList.add(client);
 		return true;
 	}
