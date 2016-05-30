@@ -13,7 +13,6 @@ public class CoordController {
 
 	@RequestMapping("/")
 	public String index() {
-
 		return "Вы подключились на сервер";
 	}
 
