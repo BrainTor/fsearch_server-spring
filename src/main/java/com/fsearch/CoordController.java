@@ -3,7 +3,9 @@ package com.fsearch;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,5 +38,16 @@ public class CoordController {
 			return null;
 		}
 		return arrayList;
+	}
+	
+	@RequestMapping(value="/cordinates/set_",method=RequestMethod.POST)
+	public Boolean setCoordinate(
+			@RequestParam(value = "coordinate", required = true) Coordinates coordinate,
+			@RequestParam(value = "hashName", required = true) String hashName) {
+		if(!hashName.equals("password")){
+			return false;
+		}
+		arrayList.add(coordinate);
+		return true;
 	}
 }
