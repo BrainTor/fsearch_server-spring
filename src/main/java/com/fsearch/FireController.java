@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +31,15 @@ public class FireController {
 		}
 		return arrayList;
 	}
-
+	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
+	public Boolean setCoordinate(
+			@RequestParam(value = "fire", required = true) Fire fire,
+			@RequestParam(value = "hashName", required = true) String hashName) {
+		if(!hashName.equals("password")){
+			return false;
+		}
+		arrayList.add(fire);
+		return true;
+	}
 
 }
