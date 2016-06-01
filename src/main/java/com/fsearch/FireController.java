@@ -24,7 +24,7 @@ public class FireController {
 		arrayList.add(fire);
 		return true;
 	}
-	@RequestMapping("/fire/get")
+	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName) {
 		if(!hashName.equals("password")){
 			return null;

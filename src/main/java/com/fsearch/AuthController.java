@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 	ArrayList<Drone> droneList = new ArrayList<Drone>();
 	ArrayList<Client> clientList = new ArrayList<Client>();
-	@RequestMapping(value="/auth/fillDrone",method=RequestMethod.POST)
+	@RequestMapping(value="/auth/fillDrone",method={RequestMethod.POST,RequestMethod.GET})
 	public Boolean setDrone(
 			@RequestParam(value = "hashName", required = true) String hashName,
 			@RequestParam(value = "hashNameDrone", required = true) String hashNameDrone,
@@ -25,7 +25,7 @@ public class AuthController {
 		droneList.add(drone);
 		return true;
 	}
-	@RequestMapping(value="/auth/fillClient",method=RequestMethod.POST)
+	@RequestMapping(value="/auth/fillClient",method={RequestMethod.POST,RequestMethod.GET})
 	public Boolean setClient(
 			@RequestParam(value = "hashName", required = true) String hashName,
 			@RequestParam(value = "hashNameClient", required = true) String hashNameClient,
