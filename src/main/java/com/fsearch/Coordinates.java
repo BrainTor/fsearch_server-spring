@@ -3,10 +3,13 @@ package com.fsearch;
 import java.util.Date;
 
 public class Coordinates {
+	
 	private Integer id, droneID;
 	Date date;
 	private Double latitude, longtitude, altitude, speed;
-
+public Coordinates() {
+		
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -1,8 +1,10 @@
 package com.fsearch;
 
 import java.util.Date;
-
 public class Fire {
+	public Fire(){
+	
+	}
 	public Fire(Integer id, Integer droneId, Integer fireRate, Double latitude, Double longtitude, Date date) {
 		super();
 		this.id = id;
