@@ -35,6 +35,7 @@ public class FireController {
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
 			@RequestBody Fire fire){
+		System.out.println(fire.getHashNane());
 		if(!fire.getHashNane().equals("password")){
 			return false;
 		}
