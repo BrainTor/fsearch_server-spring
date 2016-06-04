@@ -36,6 +36,7 @@ public class FireController {
 	public Boolean setCoordinate(
 			@RequestBody Fire fire,
 			@RequestBody String hashName) {
+		System.out.println(hashName);
 		if(!hashName.equals("password")){
 			return false;
 		}

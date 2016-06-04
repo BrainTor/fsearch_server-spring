@@ -44,6 +44,7 @@ public class CoordController {
 	public Boolean setCoordinate(
 			@RequestBody Coordinates coordinate,
 			@RequestBody String hashName) {
+		System.out.println(hashName);
 		if(!hashName.equals("password")){
 			return false;
 		}
