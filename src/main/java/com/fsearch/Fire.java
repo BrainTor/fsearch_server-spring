@@ -1,10 +1,15 @@
 package com.fsearch;
 
 import java.util.Date;
+
+import org.apache.camel.model.dataformat.JsonDataFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Fire {
-	public Fire(){
-	
+	public Fire() {
+
 	}
+
 	public Fire(Integer id, Integer droneId, Integer fireRate, Double latitude, Double longtitude, Date date) {
 		super();
 		this.id = id;
@@ -25,6 +30,7 @@ public class Fire {
 
 	private Integer id, fireRate, droneId;
 	private Double latitude, longtitude;
+	@DateTimeFormat(pattern="MMM d',' yyyy H:mm:ss a")	
 	private Date date;
 
 	public Integer getId() {

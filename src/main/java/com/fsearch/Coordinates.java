@@ -2,14 +2,19 @@ package com.fsearch;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Coordinates {
-	
+
 	private Integer id, droneID;
+	@DateTimeFormat(pattern="MMM d',' yyyy H:mm:ss a")	
 	Date date;
 	private Double latitude, longtitude, altitude, speed;
-public Coordinates() {
-		
+
+	public Coordinates() {
+
 	}
+
 	public Integer getId() {
 		return id;
 	}
