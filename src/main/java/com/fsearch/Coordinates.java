@@ -4,10 +4,12 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Coordinates {
 
 	private Integer id, droneID;
-	@DateTimeFormat(pattern="MMM d',' yyyy H:mm:ss a")	
+	@JsonFormat(pattern="MMM d',' yyyy H:mm:ss a")	
 	Date date;
 	private Double latitude, longtitude, altitude, speed;
 

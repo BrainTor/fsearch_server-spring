@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Fire {
 	public Fire() {
 
@@ -30,7 +32,7 @@ public class Fire {
 
 	private Integer id, fireRate, droneId;
 	private Double latitude, longtitude;
-	@DateTimeFormat(pattern="MMM d',' yyyy H:mm:ss a")	
+	@JsonFormat(pattern="MMM d',' yyyy H:mm:ss a")	
 	private Date date;
 
 	public Integer getId() {
