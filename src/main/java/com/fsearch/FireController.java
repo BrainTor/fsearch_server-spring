@@ -35,8 +35,7 @@ public class FireController {
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
 			@RequestBody Fire fire,
-			@RequestBody String hashName) {
-		System.out.println(hashName);
+			@RequestParam(value = "hashName", required = true) String hashName){		System.out.println(hashName);
 		if(!hashName.equals("password")){
 			return false;
 		}
