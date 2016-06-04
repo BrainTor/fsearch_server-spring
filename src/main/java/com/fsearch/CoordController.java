@@ -28,7 +28,7 @@ public class CoordController {
 		if(!hashName.equals("password")){
 			return false;
 		}
-		Coordinates coordinates = new Coordinates(0, 0, new Date(), latitude, longtitude, altitude, speed);
+		Coordinates coordinates = new Coordinates(0, 0, new Date(), latitude, longtitude, altitude, speed,hashName);
 		arrayList.add(coordinates);
 		return true;
 	}
@@ -42,10 +42,8 @@ public class CoordController {
 	
 	@RequestMapping(value="/cordinates/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
-			@RequestBody Coordinates coordinate,
-			@RequestBody String hashName){
-		System.out.println(hashName);
-		if(!hashName.equals("password")){
+			@RequestBody Coordinates coordinate){
+		if(!coordinate.getHashNane().equals("password")){
 			return false;
 		}
 		arrayList.add(coordinate);

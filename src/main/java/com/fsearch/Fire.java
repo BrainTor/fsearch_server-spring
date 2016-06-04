@@ -8,18 +8,28 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Fire {
+	private String hashNane;
 	public Fire() {
 
 	}
 
-	public Fire(Integer id, Integer droneId, Integer fireRate, Double latitude, Double longtitude, Date date) {
+	public Fire(Integer id, Integer droneId, Integer fireRate, Double latitude, Double longtitude, Date date,String hashName) {
 		super();
+		this.hashNane=hashName;
 		this.id = id;
 		this.fireRate = fireRate;
 		this.latitude = latitude;
 		this.longtitude = longtitude;
 		this.date = date;
 		this.droneId = droneId;
+	}
+
+	public String getHashNane() {
+		return hashNane;
+	}
+
+	public void setHashNane(String hashNane) {
+		this.hashNane = hashNane;
 	}
 
 	public Integer getDroneId() {

@@ -21,7 +21,7 @@ public class FireController {
 		if(!hashName.equals("password")){
 			return false;
 		}
-		Fire fire = new Fire(0,0,fireRate,  latitude, longtitude,new Date());
+		Fire fire = new Fire(0,0,fireRate,  latitude, longtitude,new Date(),hashName);
 		arrayList.add(fire);
 		return true;
 	}
@@ -34,9 +34,8 @@ public class FireController {
 	}
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
-			@RequestBody Fire fire,
-			@RequestBody String hashName){		System.out.println(hashName);
-		if(!hashName.equals("password")){
+			@RequestBody Fire fire){
+		if(!fire.getHashNane().equals("password")){
 			return false;
 		}
 		arrayList.add(fire);
