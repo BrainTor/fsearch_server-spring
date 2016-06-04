@@ -43,6 +43,7 @@ public class CoordController {
 	@RequestMapping(value="/cordinates/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
 			@RequestBody Coordinates coordinate){
+		System.out.println(coordinate.getHashNane());
 		if(!coordinate.getHashNane().equals("password")){
 			return false;
 		}
