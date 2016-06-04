@@ -2,7 +2,7 @@ package com.fsearch;
 
 import java.util.Date;
 
-import org.apache.camel.model.dataformat.JsonDataFormat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Fire {
