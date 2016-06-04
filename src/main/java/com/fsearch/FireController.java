@@ -3,6 +3,7 @@ package com.fsearch;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,8 +34,8 @@ public class FireController {
 	}
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
-			@RequestParam(value = "fire", required = true) Fire fire,
-			@RequestParam(value = "hashName", required = true) String hashName) {
+			@RequestBody Fire fire,
+			@RequestBody String hashName) {
 		if(!hashName.equals("password")){
 			return false;
 		}
