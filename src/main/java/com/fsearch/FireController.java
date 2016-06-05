@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @RestController
 public class FireController {
 	ArrayList<Fire> arrayList = new ArrayList<Fire>();
@@ -27,7 +29,7 @@ public class FireController {
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
-			@RequestParam(value = "timeFrom", required = false) Date timeFrom) {
+			@JsonFormat(pattern="MMM d',' yyyy H:mm:ss a") @RequestParam(value = "timeFrom", required = false) Date timeFrom) {
 		if(!"password".equals(hashName)){
 			return null;
 		}
