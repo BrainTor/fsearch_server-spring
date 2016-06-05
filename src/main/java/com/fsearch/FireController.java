@@ -31,7 +31,7 @@ public class FireController {
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
-			@DateTimeFormat(pattern="DDD MMM dd HH:mm:ss ZZZZ yyyy") @RequestParam(value = "timeFrom", required = false) Date timeFrom) {
+			@RequestParam(value = "timeFrom", required = false) @DateTimeFormat(pattern="DDD MMM dd HH:mm:ss ZZZZ yyyy") Date timeFrom) {
 		if(!"password".equals(hashName)){
 			return null;
 		}
