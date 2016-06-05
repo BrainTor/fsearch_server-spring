@@ -31,7 +31,9 @@ public class FireController {
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
-			@RequestParam(value = "timeFrom", required = false) @DateTimeFormat(pattern="DDD MMM dd HH:mm:ss 'GMT'ZZZ yyyy") Date timeFrom) {
+			@RequestParam(value = "timeFrom", required = false) @DateTimeFormat(pattern="EEE MMM dd HH:mm:ss ZZZZ yyyy") Date timeFrom) 
+	// date format string https://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/ak05616_.htm
+	{
 		if(!"password".equals(hashName)){
 			return null;
 		}
