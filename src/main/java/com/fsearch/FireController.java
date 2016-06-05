@@ -18,25 +18,24 @@ public class FireController {
 			@RequestParam(value = "latitude", required = true) Double latitude,
 			@RequestParam(value = "longtitude", required = true) Double longtitude,
 			@RequestParam(value = "fireRate", required = true) Integer fireRate) {
-		if(!hashName.equals("password")){
+		if(!"password".equals(hashName)){
 			return false;
 		}
-		Fire fire = new Fire(0,0,fireRate,  latitude, longtitude,new Date(),hashName);
+		Fire fire = new Fire(0,0,fireRate,  latitude, longtitude,new Date());
 		arrayList.add(fire);
 		return true;
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName) {
-		if(!hashName.equals("password")){
+		if(!"password".equals(hashName)){
 			return null;
 		}
 		return arrayList;
 	}
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
-			@RequestBody Fire fire){
-		System.out.println(fire.getHashNane());
-		if(!fire.getHashNane().equals("password")){
+			@RequestBody Fire fire,@RequestParam("hashName") String hashName){
+		if(!"password".equals(hashName)){
 			return false;
 		}
 		arrayList.add(fire);

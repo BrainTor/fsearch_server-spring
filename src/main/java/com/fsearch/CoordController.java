@@ -25,26 +25,25 @@ public class CoordController {
 			@RequestParam(value = "longtitude", required = true) Double longtitude,
 			@RequestParam(value = "altitude", required = true) Double altitude,
 			@RequestParam(value = "speed", required = true) Double speed) {
-		if(!hashName.equals("password")){
+		if(!"password".equals(hashName)){
 			return false;
 		}
-		Coordinates coordinates = new Coordinates(0, 0, new Date(), latitude, longtitude, altitude, speed,hashName);
+		Coordinates coordinates = new Coordinates(0, 0, new Date(), latitude, longtitude, altitude, speed);
 		arrayList.add(coordinates);
 		return true;
 	}
 	@RequestMapping(value="/coordinates/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Coordinates> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName) {
-		if(!hashName.equals("password")){
+		if(!"password".equals(hashName)){
 			return null;
 		}
 		return arrayList;
 	}
 	
-	@RequestMapping(value="/cordinates/set_",method=RequestMethod.POST)
+	@RequestMapping(value="/coordinates/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
-			@RequestBody Coordinates coordinate){
-		System.out.println(coordinate.getHashNane());
-		if(!coordinate.getHashNane().equals("password")){
+			@RequestBody Coordinates coordinate, @RequestParam("hashName") String hashName){
+		if(!"password".equals(hashName)){
 			return false;
 		}
 		arrayList.add(coordinate);

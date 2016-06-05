@@ -12,15 +12,6 @@ public class Coordinates {
 	@JsonFormat(pattern="MMM d',' yyyy H:mm:ss a")	
 	Date date;
 	private Double latitude, longtitude, altitude, speed;
-	private String hashNane; 
-
-	public String getHashNane() {
-		return hashNane;
-	}
-
-	public void setHashNane(String hashNane) {
-		this.hashNane = hashNane;
-	}
 
 	public Coordinates() {
 
@@ -83,9 +74,8 @@ public class Coordinates {
 	}
 
 	public Coordinates(Integer id, Integer droneID, Date date, Double latitude, Double longtitude, Double altitude,
-			Double speed,String hashName) {
-		super();
-		this.hashNane=hashName;
+			Double speed) {
+		super();  
 		this.id = id;
 		this.droneID = droneID;
 		this.date = date;
