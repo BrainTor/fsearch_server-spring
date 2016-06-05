@@ -26,11 +26,21 @@ public class FireController {
 		return true;
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
-	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName) {
+	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
+			@RequestParam(value = "timeFrom", required = false) Date timeFrom) {
 		if(!"password".equals(hashName)){
 			return null;
 		}
-		return arrayList;
+		if(timeFrom==null){
+			return arrayList;	
+		}
+		ArrayList<Fire>temp=new ArrayList<Fire>();
+		for(Fire f:arrayList){
+			if(f.getDate().compareTo( timeFrom)>0){
+				temp.add(f);
+			}
+		}
+		return temp;
 	}
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(

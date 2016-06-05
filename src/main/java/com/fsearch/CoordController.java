@@ -33,11 +33,22 @@ public class CoordController {
 		return true;
 	}
 	@RequestMapping(value="/coordinates/get",method={RequestMethod.POST,RequestMethod.GET})
-	public ArrayList<Coordinates> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName) {
+	public ArrayList<Coordinates> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
+			@RequestParam(value = "timeFrom", required = false) Date timeFrom) {
 		if(!"password".equals(hashName)){
 			return null;
 		}
-		return arrayList;
+		if (timeFrom == null) {
+			return arrayList;
+		}
+		ArrayList<Coordinates> temp = new ArrayList<Coordinates>();
+		for (Coordinates c : arrayList) {
+			if (c.getDate().compareTo(timeFrom) > 0) {
+				temp.add(c);
+			}
+		}
+		return temp;
+
 	}
 	
 	@RequestMapping(value="/coordinates/set_",method=RequestMethod.POST)
