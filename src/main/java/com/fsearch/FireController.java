@@ -3,6 +3,8 @@ package com.fsearch;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +31,7 @@ public class FireController {
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
-			@JsonFormat(pattern="ddd MMM dd HH:mm:ss Z yyyy") @RequestParam(value = "timeFrom", required = false) Date timeFrom) {
+			@DateTimeFormat(iso=ISO.DATE) @RequestParam(value = "timeFrom", required = false) Date timeFrom) {
 		if(!"password".equals(hashName)){
 			return null;
 		}
