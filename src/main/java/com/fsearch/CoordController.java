@@ -43,7 +43,7 @@ public class CoordController {
 		}
 		ArrayList<Coordinates> temp = new ArrayList<Coordinates>();
 		for (Coordinates c : arrayList) {
-			if (c.getDate().compareTo(timeFrom) > 0) {
+			if (c.getDate().compareTo(timeFrom) < 0) {
 				temp.add(c);
 			}
 		}
