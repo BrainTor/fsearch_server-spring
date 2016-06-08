@@ -42,7 +42,7 @@ public class FireController {
 		}
 		ArrayList<Fire>temp=new ArrayList<Fire>();
 		for(Fire f:arrayList){
-			if(f.getDate().compareTo( timeFrom)<0){
+			if(f.getDate().compareTo( timeFrom)>0){
 				temp.add(f);
 			}
 		}
