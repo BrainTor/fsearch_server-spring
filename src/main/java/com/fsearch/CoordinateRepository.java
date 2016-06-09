@@ -10,7 +10,10 @@ public class CoordinateRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	public int createCoordinate(Coordinates coordinates){
-	return	jdbcTemplate.update("INSERT INTO coordinate (latitude,longtitude,altitude,speed,date,droneid) VALUES (?,?,?,?,?,?)",coordinates.getLatitude(),coordinates.getLongtitude(),coordinates.getAltitude(),coordinates.getSpeed(),coordinates.getDate(),coordinates.getDroneID() );
+	return	jdbcTemplate.update("INSERT INTO coordinate (latitude,longtitude,altitude,speed,date,droneid) VALUES (?,?,?,?,?,?)",
+			coordinates.getLatitude(),coordinates.getLongtitude(),
+			coordinates.getAltitude(),coordinates.getSpeed(),
+			new Object[] {coordinates.getDate()},coordinates.getDroneID() );
 	}
 	public List<Coordinates> getCoordinate(){
 		try{
