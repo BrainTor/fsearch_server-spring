@@ -2,6 +2,8 @@ package com.fsearch;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+
 import org.springframework.jdbc.core.RowMapper;
 
 public class FireMapper implements RowMapper<Fire>{
@@ -9,7 +11,7 @@ public class FireMapper implements RowMapper<Fire>{
 	Fire fire= new Fire();
     fire.setLatitude(rs.getDouble("latitude"));
     fire.setLongtitude(rs.getDouble("longtitude"));
-    fire.setDate(rs.getDate("date"));
+    fire.setDate(new Date(rs.getLong("date")));
     fire.setDroneId(rs.getInt("droneid"));
     fire.setFireRate(rs.getInt("firerate"));
 	return fire;

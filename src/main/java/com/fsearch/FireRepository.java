@@ -16,7 +16,7 @@ public class FireRepository {
 	public int createFire(Fire fire) {
 		return jdbcTemplate.update("INSERT INTO fire (firerate,latitude,longtitude,date,droneid) VALUES (?,?,?,?,?)",
 				fire.getFireRate(), fire.getLatitude(), fire.getLongtitude(), 
-		        new java.sql.Date(new Date().getTime()),    
+				fire.getDate().getTime(),    
 				fire.getDroneId());
 	}
 
