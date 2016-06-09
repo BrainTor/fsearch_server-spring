@@ -11,7 +11,7 @@ public class CoordinateMapper implements RowMapper<Coordinates> {
     coordinates.setAltitude(rs.getDouble("altitude"));
     coordinates.setSpeed(rs.getDouble("speed"));
     coordinates.setDate(rs.getDate("date"));
-    coordinates.setDroneID(rs.getInt("droneID"));
+    coordinates.setDroneID(rs.getInt("droneid"));
 	return coordinates;
 	}
 }

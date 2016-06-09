@@ -10,7 +10,8 @@ public class FireMapper implements RowMapper<Fire>{
     fire.setLatitude(rs.getDouble("latitude"));
     fire.setLongtitude(rs.getDouble("longtitude"));
     fire.setDate(rs.getDate("date"));
-    fire.setDroneId(rs.getInt("droneId"));
+    fire.setDroneId(rs.getInt("droneid"));
+    fire.setFireRate(rs.getInt("firerate"));
 	return fire;
 	}
 }
