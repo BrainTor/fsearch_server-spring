@@ -61,6 +61,7 @@ public class CoordController {
 			return false;
 		}
 		coordinate.setDroneID(drone.getId());
+		coordinate.setDate(new Date());
 		coordinateRepository.createCoordinate(coordinate);
 		return true;
 

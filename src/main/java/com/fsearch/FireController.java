@@ -60,6 +60,7 @@ public class FireController {
 			return false;
 		}
 		fire.setDroneId(drone.getId());
+		fire.setDate(new Date());
 		fireRepository.createFire(fire);
 		return true;
 	}
