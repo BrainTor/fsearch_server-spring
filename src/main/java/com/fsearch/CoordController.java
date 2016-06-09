@@ -45,20 +45,20 @@ public class CoordController {
 	public ArrayList<Coordinates> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
 			@RequestParam(value = "timeFrom", required = false) String timeFrom) {
 		Client client=clientRepository.getClient(hashName);
-		SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
-        Date date=null;
-		try {
-			date = parserSDF.parse(timeFrom);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 		if(client==null){
 			return null;
 		}
-		if(date==null){
+		if(timeFrom==null){
 			return (ArrayList<com.fsearch.Coordinates>) coordinateRepository.getCoordinate();	
 		}
 		else{
+			SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+	        Date date=null;
+			try {
+				date = parserSDF.parse(timeFrom);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			return (ArrayList<com.fsearch.Coordinates>)coordinateRepository.getCoordinate(date);
 		}
 

@@ -43,21 +43,21 @@ public class FireController {
 			@RequestParam(value = "timeFrom", required = false) String timeFrom) 
 	// date format string https://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/ak05616_.htm
 	{
-		SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
-        Date date=null;
-		try {
-			date = parserSDF.parse(timeFrom);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 		Client client=clientRepository.getClient(hashName);
 		if(client==null){
 			return null;
 		}
-		if(date==null){
+		if(timeFrom==null){
 			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire();	
 		}
 		else{
+			SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+	        Date date=null;
+			try {
+				date = parserSDF.parse(timeFrom);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire(date);
 		}
 
