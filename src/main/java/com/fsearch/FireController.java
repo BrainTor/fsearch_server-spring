@@ -54,7 +54,7 @@ public class FireController {
 		if(client==null){
 			return null;
 		}
-		if(timeFrom==null){
+		if(date==null){
 			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire();	
 		}
 		else{

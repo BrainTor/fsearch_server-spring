@@ -55,7 +55,7 @@ public class CoordController {
 		if(client==null){
 			return null;
 		}
-		if(timeFrom==null){
+		if(date==null){
 			return (ArrayList<com.fsearch.Coordinates>) coordinateRepository.getCoordinate();	
 		}
 		else{
