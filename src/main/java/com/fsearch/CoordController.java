@@ -20,7 +20,7 @@ public class CoordController {
 	private CoordinateRepository coordinateRepository;
 	@RequestMapping("/")
 	public String index() {
-		return "Вы подключились на сервер <br/>Добавить пользователя <a href='/auth.html'>здесь</a>";
+		return "Вы подключились на сервер <br/>Добавить пользователя <a href='/auth.html'>здесь</a> <br/>Добавить пожар <a href='/setfire.html'>здесь</a> <br/>Добавить координату <a href='/setcoordinate.html'>здесь</a> ";
 	}
 
 	@RequestMapping("/coordinates/set")
