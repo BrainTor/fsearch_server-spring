@@ -20,4 +20,11 @@ public class CoordinateRepository {
 		return null;
 	}
 	}
+	public List<Coordinates> getCoordinate(Date timeFrom) {
+		try {
+			return jdbcTemplate.query("SELECT * FROM coordinate WHERE date >?", new CoordinateMapper(),timeFrom);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }
