@@ -15,26 +15,24 @@ public class AuthController {
 	@RequestMapping(value="/auth/fillDrone",method={RequestMethod.POST,RequestMethod.GET})
 	public Boolean setDrone(
 			@RequestParam(value = "hashName", required = true) String hashName,
-			@RequestParam(value = "hashNameDrone", required = true) String hashNameDrone,
-	        @RequestParam(value = "ID", required = true) Integer ID)
+			@RequestParam(value = "hashNameDrone", required = true) String hashNameDrone)
 		    {
 		if(!hashName.equals("password")){
 			return false;
 		}
-		Drone drone = new Drone(ID,hashNameDrone);
+		Drone drone = new Drone(0,hashNameDrone);
 		droneList.add(drone);
 		return true;
 	}
 	@RequestMapping(value="/auth/fillClient",method={RequestMethod.POST,RequestMethod.GET})
 	public Boolean setClient(
 			@RequestParam(value = "hashName", required = true) String hashName,
-			@RequestParam(value = "hashNameClient", required = true) String hashNameClient,
-			@RequestParam(value = "ID", required = true) Integer ID)
+			@RequestParam(value = "hashNameClient", required = true) String hashNameClient)
 		    {
 		if(!hashName.equals("password")){
 			return false;
 		}
-		Client client = new Client(ID,hashNameClient);
+		Client client = new Client(0,hashNameClient);
 		clientList.add(client);
 		return true;
 	}
