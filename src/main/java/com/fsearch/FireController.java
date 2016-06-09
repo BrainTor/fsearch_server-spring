@@ -58,7 +58,7 @@ public class FireController {
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			System.err.println(fireRepository.getFire(date));
+			System.err.println("! "+date+" ! "+fireRepository.getFire(date));
 			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire(date);
 		}
 
