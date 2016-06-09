@@ -13,7 +13,7 @@ public class CoordinateRepository {
 	return	jdbcTemplate.update("INSERT INTO coordinate (latitude,longtitude,altitude,speed,date,droneid) VALUES (?,?,?,?,?,?)",
 			coordinates.getLatitude(),coordinates.getLongtitude(),
 			coordinates.getAltitude(),coordinates.getSpeed(),
-	        new java.sql.Date(coordinates.getDate().getTime()),    
+	        new java.sql.Date(new Date().getTime()),    
 			coordinates.getDroneID() );
 	}
 	public List<Coordinates> getCoordinate(){
