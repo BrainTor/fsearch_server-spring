@@ -48,13 +48,10 @@ public class FireController {
 		if(timeFrom==null){
 			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire();	
 		}
-//		ArrayList<Fire>temp=new ArrayList<Fire>();
-//		for(Fire f:arrayList){
-//			if(f.getDate().compareTo( timeFrom)>0){
-//				temp.add(f);
-//			}
-//		}
-	return null;
+		else{
+			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire(timeFrom);
+		}
+
 	}
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(

@@ -1,5 +1,6 @@
 package com.fsearch;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,14 @@ public class FireRepository {
 	public List<Fire> getFire() {
 		try {
 			return jdbcTemplate.query("SELECT * FROM 	fire", new FireMapper());
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public List<Fire> getFire(Date timeFrom) {
+		try {
+			return jdbcTemplate.query("SELECT * FROM fire WHERE date >?", new FireMapper(),timeFrom);
 		} catch (Exception e) {
 			return null;
 		}
