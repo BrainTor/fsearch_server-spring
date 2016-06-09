@@ -15,7 +15,7 @@ public class CoordController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "Вы подключились на сервер";
+		return "Вы подключились на сервер <br/>Добавить пользователя <a href='/auth.html'>здесь</a>";
 	}
 
 	@RequestMapping("/coordinates/set")
