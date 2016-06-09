@@ -19,6 +19,11 @@ public class DroneRepository {
 	return jdbcTemplate.queryForObject("SELECT * FROM drone WHERE hashname=?", new DroneMapper(), hashName);
 	}
 	public List<Drone> getDrone() {
+		try{
 		return jdbcTemplate.query("SELECT * FROM 	drone", new DroneMapper());
+		} catch(Exception e){
+			return null;
+		}
+		
 	}
 }
