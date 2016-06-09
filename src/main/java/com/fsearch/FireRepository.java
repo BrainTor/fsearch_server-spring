@@ -30,7 +30,7 @@ public class FireRepository {
 
 	public List<Fire> getFire(Date timeFrom) {
 		try {
-			return jdbcTemplate.query("SELECT * FROM fire WHERE date >?", new FireMapper(),timeFrom);
+			return jdbcTemplate.query("SELECT * FROM fire WHERE date > ?", new FireMapper(),timeFrom.getTime());
 		} catch (Exception e) {
 			return null;
 		}
