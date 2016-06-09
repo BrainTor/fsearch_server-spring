@@ -40,22 +40,16 @@ public class FireController {
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Fire> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
-//			@RequestParam(value = "timeFrom", required = false) @DateTimeFormat(pattern="EEE MMM dd HH:mm:ss ZZZZ yyyy") Date timeFrom) 
 			@RequestParam(value = "timeFrom", required = false) String timeFrom) 
 	// date format string https://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/ak05616_.htm
 	{
-		System.err.println("!!!!"+timeFrom);
 		SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
-        Date date;
+        Date date=null;
 		try {
 			date = parserSDF.parse(timeFrom);
-	        System.out.println("1date:"+date);		
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-	        System.out.println("2date: ");		
 		}
-		Date timeFrom1=new Date();
 		Client client=clientRepository.getClient(hashName);
 		if(client==null){
 			return null;
@@ -64,7 +58,7 @@ public class FireController {
 			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire();	
 		}
 		else{
-			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire(timeFrom1);
+			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire(date);
 		}
 
 	}

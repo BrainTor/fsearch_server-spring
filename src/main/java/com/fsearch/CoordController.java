@@ -1,7 +1,10 @@
 package com.fsearch;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,8 +43,15 @@ public class CoordController {
 	}
 	@RequestMapping(value="/coordinates/get",method={RequestMethod.POST,RequestMethod.GET})
 	public ArrayList<Coordinates> getCoordinate(@RequestParam(value = "hashName", required = true) String hashName,
-			@RequestParam(value = "timeFrom", required = false) Date timeFrom) {
+			@RequestParam(value = "timeFrom", required = false) String timeFrom) {
 		Client client=clientRepository.getClient(hashName);
+		SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+        Date date=null;
+		try {
+			date = parserSDF.parse(timeFrom);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		if(client==null){
 			return null;
 		}
@@ -49,7 +59,7 @@ public class CoordController {
 			return (ArrayList<com.fsearch.Coordinates>) coordinateRepository.getCoordinate();	
 		}
 		else{
-			return (ArrayList<com.fsearch.Coordinates>)coordinateRepository.getCoordinate(timeFrom);
+			return (ArrayList<com.fsearch.Coordinates>)coordinateRepository.getCoordinate(date);
 		}
 
 	}
