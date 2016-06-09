@@ -1,5 +1,6 @@
 package com.fsearch;
 
+import java.awt.List;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,12 +20,16 @@ public class AuthController {
 	@RequestMapping(value = "/auth/fillDrone", method = { RequestMethod.POST, RequestMethod.GET })
 	public Boolean setDrone(@RequestParam(value = "hashName", required = true) String hashName,
 			@RequestParam(value = "hashNameDrone", required = true) String hashNameDrone) {
-		if (!hashName.equals("password")) {
+		java.util.List<Drone> list=droneRepository.getDrone();
+		if (list.size()==0&&!hashName.equals("password")) {
 			return false;
 		}
-		Drone drone = new Drone(0, hashNameDrone);
-		droneRepository.createDrone(drone);
-		return true;
+	   if(droneRepository.getDrone(hashName)!=null){
+		   Drone drone = new Drone(0, hashNameDrone);
+			droneRepository.createDrone(drone);
+			return true;
+	   }
+				return false;
 	}
 
 	@RequestMapping(value = "/auth/fillClient", method = { RequestMethod.POST, RequestMethod.GET })
