@@ -10,7 +10,7 @@ public class DroneRepository {
 @Autowired
 private JdbcTemplate jdbcTemplate;
 public int createDrone(Drone drone){
-return	jdbcTemplate.update("INSERT INTO \"DRONE\" (\"hashName\") VALUES (?)",drone.getHashName() );
+return	jdbcTemplate.update("INSERT INTO DRONE (hashName) VALUES (?)",drone.getHashName() );
 }
 public List<Drone> getDrone(){
 return jdbcTemplate.query("SELECT * FROM 	\"DRONE\"", 	new	DroneMapper());
