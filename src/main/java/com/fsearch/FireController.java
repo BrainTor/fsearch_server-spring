@@ -3,6 +3,7 @@ package com.fsearch;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,18 +16,24 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @RestController
 public class FireController {
-	ArrayList<Fire> arrayList = new ArrayList<Fire>();
+	@Autowired
+	private DroneRepository droneRepository;
+	@Autowired
+	private ClientRepository clientRepository;
+	@Autowired
+	private FireRepository fireRepository;
 	@RequestMapping("/fire/set")
 	public Boolean Fire(
 			@RequestParam(value = "hashName", required = true) String hashName,
 			@RequestParam(value = "latitude", required = true) Double latitude,
 			@RequestParam(value = "longtitude", required = true) Double longtitude,
 			@RequestParam(value = "fireRate", required = true) Integer fireRate) {
-		if(!"password".equals(hashName)){
+		Drone drone=droneRepository.getDrone(hashName);
+		if(drone==null){
 			return false;
 		}
-		Fire fire = new Fire(0,0,fireRate,  latitude, longtitude,new Date());
-		arrayList.add(fire);
+		Fire fire = new Fire(0,drone.getId(),fireRate,  latitude, longtitude,new Date());
+		fireRepository.createFire(fire);
 		return true;
 	}
 	@RequestMapping(value="/fire/get",method={RequestMethod.POST,RequestMethod.GET})
@@ -34,27 +41,29 @@ public class FireController {
 			@RequestParam(value = "timeFrom", required = false) @DateTimeFormat(pattern="EEE MMM dd HH:mm:ss ZZZZ yyyy") Date timeFrom) 
 	// date format string https://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/ak05616_.htm
 	{
-		if(!"password".equals(hashName)){
+		Client client=clientRepository.getClient(hashName);
+		if(client==null){
 			return null;
 		}
 		if(timeFrom==null){
-			return arrayList;	
+			return (ArrayList<com.fsearch.Fire>) fireRepository.getFire();	
 		}
-		ArrayList<Fire>temp=new ArrayList<Fire>();
-		for(Fire f:arrayList){
-			if(f.getDate().compareTo( timeFrom)>0){
-				temp.add(f);
-			}
-		}
-		return temp;
+//		ArrayList<Fire>temp=new ArrayList<Fire>();
+//		for(Fire f:arrayList){
+//			if(f.getDate().compareTo( timeFrom)>0){
+//				temp.add(f);
+//			}
+//		}
+	return null;
 	}
 	@RequestMapping(value="/fire/set_",method=RequestMethod.POST)
 	public Boolean setCoordinate(
 			@RequestBody Fire fire,@RequestParam("hashName") String hashName){
-		if(!"password".equals(hashName)){
+		Drone drone=droneRepository.getDrone(hashName);
+		if(drone==null){
 			return false;
 		}
-		arrayList.add(fire);
+		fireRepository.createFire(fire);
 		return true;
 	}
 
