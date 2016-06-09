@@ -1,7 +1,10 @@
 package com.fsearch;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -42,6 +45,16 @@ public class FireController {
 	// date format string https://www.ibm.com/support/knowledgecenter/SSMKHH_9.0.0/com.ibm.etools.mft.doc/ak05616_.htm
 	{
 		System.err.println("!!!!"+timeFrom);
+		SimpleDateFormat parserSDF = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH);
+        Date date;
+		try {
+			date = parserSDF.parse(timeFrom);
+	        System.out.println("1date:"+date);		
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	        System.out.println("2date: ");		
+		}
 		Date timeFrom1=new Date();
 		Client client=clientRepository.getClient(hashName);
 		if(client==null){
