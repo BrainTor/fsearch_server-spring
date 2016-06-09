@@ -15,15 +15,21 @@ public class DroneRepository {
 	public int createDrone(Drone drone) {
 		return jdbcTemplate.update("INSERT INTO drone (hashname) VALUES (?)", drone.getHashName());
 	}
-	public Drone getDrone(String hashName){
-	return jdbcTemplate.queryForObject("SELECT * FROM drone WHERE hashname=?", new DroneMapper(), hashName);
-	}
-	public List<Drone> getDrone() {
-		try{
-		return jdbcTemplate.query("SELECT * FROM 	drone", new DroneMapper());
-		} catch(Exception e){
+
+	public Drone getDrone(String hashName) {
+		try {
+			return jdbcTemplate.queryForObject("SELECT * FROM drone WHERE hashname=?", new DroneMapper(), hashName);
+		} catch (Exception e) {
 			return null;
 		}
-		
+	}
+
+	public List<Drone> getDrone() {
+		try {
+			return jdbcTemplate.query("SELECT * FROM 	drone", new DroneMapper());
+		} catch (Exception e) {
+			return null;
+		}
+
 	}
 }
