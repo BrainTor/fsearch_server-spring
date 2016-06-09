@@ -60,6 +60,7 @@ public class CoordController {
 		if(drone==null){
 			return false;
 		}
+		coordinate.setDroneID(drone.getId());
 		coordinateRepository.createCoordinate(coordinate);
 		return true;
 

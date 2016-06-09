@@ -59,6 +59,7 @@ public class FireController {
 		if(drone==null){
 			return false;
 		}
+		fire.setDroneId(drone.getId());
 		fireRepository.createFire(fire);
 		return true;
 	}
