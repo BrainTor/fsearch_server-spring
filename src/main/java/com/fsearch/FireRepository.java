@@ -10,9 +10,9 @@ public class FireRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	public int createFire(Fire fire){
-	return	jdbcTemplate.update("INSERT INTO \"FIRE\" (\"fireRate\",\"latitude\",\"longtitude\",\"date\",\"droneID\") VALUES (?,?,?,?,?)",fire.getFireRate(),fire.getLatitude(),fire.getLongtitude(),fire.getDate(),fire.getDroneId() );
+	return	jdbcTemplate.update("INSERT INTO fire (fireRate,latitude,longtitude,date,droneID) VALUES (?,?,?,?,?)",fire.getFireRate(),fire.getLatitude(),fire.getLongtitude(),fire.getDate(),fire.getDroneId() );
 	}
 	public List<Fire> getFire(){
-	return jdbcTemplate.query("SELECT * FROM 	\"FIRE\"", 	new	FireMapper());
+	return jdbcTemplate.query("SELECT * FROM 	fire", 	new	FireMapper());
 	}
 }

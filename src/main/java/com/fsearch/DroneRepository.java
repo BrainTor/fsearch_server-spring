@@ -13,6 +13,6 @@ public int createDrone(Drone drone){
 return	jdbcTemplate.update("INSERT INTO drone (hashname) VALUES (?)",drone.getHashName() );
 }
 public List<Drone> getDrone(){
-return jdbcTemplate.query("SELECT * FROM 	\"Drone\"", 	new	DroneMapper());
+return jdbcTemplate.query("SELECT * FROM 	drone", 	new	DroneMapper());
 }
 }

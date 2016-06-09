@@ -10,9 +10,9 @@ public class ClientRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	public int createClient(Client client){
-	return	jdbcTemplate.update("INSERT INTO \"CLIEN\" (\"hashName\") VALUES (?)",client.getHashName() );
+	return	jdbcTemplate.update("INSERT INTO client (hashname) VALUES (?)",client.getHashName() );
 	}
 	public List<Client> getClient(){
-	return jdbcTemplate.query("SELECT * FROM 	\"Client\"", 	new	ClientMapper());
+	return jdbcTemplate.query("SELECT * FROM 	client", 	new	ClientMapper());
 	}
 }

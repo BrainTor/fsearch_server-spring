@@ -10,9 +10,9 @@ public class CoordinateRepository {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	public int createCoordinate(Coordinates coordinates){
-	return	jdbcTemplate.update("INSERT INTO \"COORDINATE\" (\"latitude	\",\"longtitude\",\"altitude\",\"speed\",\"date\",\"droneID\") VALUES (?,?,?,?,?,?)",coordinates.getLatitude(),coordinates.getLongtitude(),coordinates.getAltitude(),coordinates.getSpeed(),coordinates.getDate(),coordinates.getDroneID() );
+	return	jdbcTemplate.update("INSERT INTO coordinate (latitude,longtitude,altitude,speed,date,droneid) VALUES (?,?,?,?,?,?)",coordinates.getLatitude(),coordinates.getLongtitude(),coordinates.getAltitude(),coordinates.getSpeed(),coordinates.getDate(),coordinates.getDroneID() );
 	}
 	public List<Coordinates> getCoordinate(){
-	return jdbcTemplate.query("SELECT * FROM 	\"COORDINATE\"", 	new	CoordinateMapper());
+	return jdbcTemplate.query("SELECT * FROM 	coordinate", 	new	CoordinateMapper());
 	}
 }
