@@ -13,6 +13,11 @@ public class CoordinateRepository {
 	return	jdbcTemplate.update("INSERT INTO coordinate (latitude,longtitude,altitude,speed,date,droneid) VALUES (?,?,?,?,?,?)",coordinates.getLatitude(),coordinates.getLongtitude(),coordinates.getAltitude(),coordinates.getSpeed(),coordinates.getDate(),coordinates.getDroneID() );
 	}
 	public List<Coordinates> getCoordinate(){
-	return jdbcTemplate.query("SELECT * FROM 	coordinate", 	new	CoordinateMapper());
+		try{
+			return jdbcTemplate.query("SELECT * FROM 	coordinate", 	new	CoordinateMapper());		
+		}
+	catch(Exception e){
+		return null;
+	}
 	}
 }

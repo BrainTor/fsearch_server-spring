@@ -36,7 +36,12 @@ public class AuthController {
 	@RequestMapping(value = "/auth/fillClient", method = { RequestMethod.POST, RequestMethod.GET })
 	public Boolean setClient(@RequestParam(value = "hashName", required = true) String hashName,
 			@RequestParam(value = "hashNameClient", required = true) String hashNameClient) {
-		if (!hashName.equals("password")) {
+		java.util.List<Client> list = clientRepository.getClient();
+		if (list.size() == 0) {
+			if (!hashName.equals("password")) {
+				return false;
+			}
+		} else if (clientRepository.getClient(hashName) == null) {
 			return false;
 		}
 		Client client = new Client(0, hashNameClient);
