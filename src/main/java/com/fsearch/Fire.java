@@ -12,7 +12,7 @@ public class Fire {
 
 	}
 
-	public Fire(Integer id, Integer droneId, Integer fireRate, Double latitude, Double longtitude, Date date) {
+	public Fire(Integer id, Integer droneId, Integer fireRate, Double latitude, Double longtitude, Date date,byte[]photo) {
 		super();
 		this.id = id;
 		this.fireRate = fireRate;
@@ -20,8 +20,17 @@ public class Fire {
 		this.longtitude = longtitude;
 		this.date = date;
 		this.droneId = droneId;
+		this.photo=photo;
 	}
 
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 
 	public Integer getDroneId() {
 		return droneId;
@@ -35,7 +44,7 @@ public class Fire {
 	private Double latitude, longtitude;
 	@JsonFormat(pattern="MMM d',' yyyy H:mm:ss a")	
 	private Date date;
-
+    private byte[] photo;
 	public Integer getId() {
 		return id;
 	}

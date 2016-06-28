@@ -34,7 +34,7 @@ public class FireController {
 		if(drone==null){
 			return false;
 		}
-		Fire fire = new Fire(0,drone.getId(),fireRate,  latitude, longtitude,new Date());
+		Fire fire = new Fire(0,drone.getId(),fireRate,  latitude, longtitude,new Date(),null);
 		fireRepository.createFire(fire);
 		return true;
 	}
