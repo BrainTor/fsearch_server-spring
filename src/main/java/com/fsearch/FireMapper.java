@@ -14,6 +14,7 @@ public class FireMapper implements RowMapper<Fire>{
     fire.setDate(new Date(rs.getLong("date")));
     fire.setDroneId(rs.getInt("droneid"));
     fire.setFireRate(rs.getInt("firerate"));
+    fire.setPhoto(rs.getBytes("photo"));;
 	return fire;
 	}
 }
