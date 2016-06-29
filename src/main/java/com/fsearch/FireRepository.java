@@ -14,7 +14,7 @@ public class FireRepository {
 	private JdbcTemplate jdbcTemplate;
 
 	public int createFire(Fire fire) {
-		return jdbcTemplate.update("INSERT INTO fire (firerate,latitude,longtitude,date,droneid) VALUES (?,?,?,?,?)",
+		return jdbcTemplate.update("INSERT INTO fire (firerate,latitude,longtitude,date,droneid,photo) VALUES (?,?,?,?,?,?)",
 				fire.getFireRate(), fire.getLatitude(), fire.getLongtitude(), 
 				fire.getDate().getTime(),    
 				fire.getDroneId(),fire.getPhoto());
